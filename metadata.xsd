@@ -17,7 +17,7 @@ Please note that the EBU-TT XML Schema is a helping document and NOT normative b
         
         <xs:element name="name" minOccurs="0" maxOccurs="unbounded">
           <xs:complexType mixed="true">
-            <xs:attribute name="type">
+            <xs:attribute name="type" use="required">
               <xs:simpleType>
                 <xs:restriction base="xs:token">
                   <xs:enumeration value="full"/>
@@ -45,7 +45,7 @@ Please note that the EBU-TT XML Schema is a helping document and NOT normative b
         
       </xs:sequence>
       
-      <xs:attribute name="type">
+      <xs:attribute name="type" use="required">
         <xs:simpleType>
           <xs:restriction base="xs:token">
             <xs:enumeration value="person"/>
