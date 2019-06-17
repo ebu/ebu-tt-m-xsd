@@ -550,7 +550,7 @@ Please note that the EBU-TT XML Schema is a helping document and NOT normative b
 	<xs:complexType name="stlConversionParameter_type">
 		<xs:simpleContent>
 			<xs:extension base="xs:string">
-				<xs:attribute name="key" type="xs:string" use="optional"/>
+				<xs:attribute name="key" type="xs:string" use="required"/>
 			</xs:extension>
 		</xs:simpleContent>
 	</xs:complexType>
