@@ -700,8 +700,8 @@ Please note that the EBU-TT XML Schema is a helping document and NOT normative b
 
 	<xs:complexType name="metadataBase_type">
 		<xs:sequence>
-			<xs:element ref="ttm:title" minOccurs="0"/>
-			<xs:element ref="ttm:desc" minOccurs="0"/>
+			<xs:element ref="ttm:title" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="ttm:desc" minOccurs="0" maxOccurs="1"/>
 		</xs:sequence>
 	</xs:complexType>
 

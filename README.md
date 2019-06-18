@@ -15,3 +15,9 @@ The publication of this EBU-TT XML Schema for EBU-TT Metadata is intended to sup
 implementation of the specification in EBU-Tech 3390 version 1.0.
 
 Please note that the EBU-TT XML Schema is a helping document and NOT normative but informative.
+
+## Style guide
+
+Where an element is defined or referenced with either a `minOccurs` or a `maxOccurs`
+that is not the default value (which is 1 for both), _both_ `minOccurs` and `maxOccurs`
+should be explicitly specified.
