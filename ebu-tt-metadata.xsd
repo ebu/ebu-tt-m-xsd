@@ -687,6 +687,11 @@ Please note that the EBU-TT XML Schema is a helping document and NOT normative b
 		</xs:simpleContent>
 	</xs:complexType>
 
+	<xs:complexType name="transitionStyle_type">
+		<xs:attribute name="inUnit" type="ebuttdt:transitionStyleAttributeType" use="required"/>
+		<xs:attribute name="outUnit" type="ebuttdt:transitionStyleAttributeType" use="required"/>
+	</xs:complexType>
+	
 	<xs:complexType name="anyMetadata_type">
 		<xs:annotation>
 			<xs:documentation>Container for metadata
@@ -741,7 +746,7 @@ Please note that the EBU-TT XML Schema is a helping document and NOT normative b
 					<xs:element name="authoringTechnique"
 						type="authoringTechnique_type" minOccurs="0"
 						maxOccurs="unbounded"/>
-					<xs:element name="transitionStyle" type="xs:string"
+					<xs:element name="transitionStyle" type="transitionStyle_type"
 						minOccurs="0" maxOccurs="unbounded"/>
 					<xs:element name="facet" type="facet_type" minOccurs="0"
 						maxOccurs="unbounded"/>
@@ -763,7 +768,7 @@ Please note that the EBU-TT XML Schema is a helping document and NOT normative b
 						maxOccurs="unbounded"/>
 					<xs:element name="binaryData" type="binaryData_type"
 						minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element name="transitionStyle" type="xs:string"
+					<xs:element name="transitionStyle" type="transitionStyle_type"
 						minOccurs="0" maxOccurs="unbounded"/>
 					<xs:element name="facet" type="facet_type" minOccurs="0"
 						maxOccurs="unbounded"/>
@@ -783,7 +788,7 @@ Please note that the EBU-TT XML Schema is a helping document and NOT normative b
 					<xs:element name="authoringTechnique"
 						type="authoringTechnique_type" minOccurs="0"
 						maxOccurs="unbounded"/>
-					<xs:element name="transitionStyle" type="xs:string"
+					<xs:element name="transitionStyle" type="transitionStyle_type"
 						minOccurs="0" maxOccurs="unbounded"/>
 					<xs:element name="facet" type="facet_type" minOccurs="0"
 						maxOccurs="unbounded"/>
