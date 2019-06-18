@@ -15,3 +15,8 @@ The publication of this EBU-TT XML Schema for EBU-TT Metadata is intended to sup
 implementation of the specification in EBU-Tech 3390 version 1.0.
 
 Please note that the EBU-TT XML Schema is a helping document and NOT normative but informative.
+
+## Style Guide
+
+The `use` attribute should only be specified when its value is `required` - in all other
+cases the default `optional` value applies and does not need to be specified.

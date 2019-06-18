@@ -543,14 +543,14 @@ Please note that the EBU-TT XML Schema is a helping document and NOT normative b
 		</xs:sequence>
 		<xs:attribute name="process" type="xs:string" use="required"/>
 		<xs:attribute name="generatedBy" type="xs:anyURI" use="required"/>
-		<xs:attribute name="sourceId" type="xs:anyURI" use="optional"/>
+		<xs:attribute name="sourceId" type="xs:anyURI"/>
 		<xs:attribute name="appliedDateTime" type="xs:dateTime"/>
 	</xs:complexType>
 
 	<xs:complexType name="stlConversionParameter_type">
 		<xs:simpleContent>
 			<xs:extension base="xs:string">
-				<xs:attribute name="key" type="xs:string" use="optional"/>
+				<xs:attribute name="key" type="xs:string"/>
 			</xs:extension>
 		</xs:simpleContent>
 	</xs:complexType>
@@ -565,8 +565,8 @@ Please note that the EBU-TT XML Schema is a helping document and NOT normative b
 	<xs:complexType name="facet_type">
 		<xs:simpleContent>
 			<xs:extension base="xs:string">
-				<xs:attribute name="link" type="xs:anyURI" use="optional"/>
-				<xs:attribute name="expresses" use="optional">
+				<xs:attribute name="link" type="xs:anyURI"/>
+				<xs:attribute name="expresses">
 					<xs:simpleType>
 						<xs:restriction base="xs:token">
 							<xs:enumeration value="has"/>
@@ -596,8 +596,8 @@ Please note that the EBU-TT XML Schema is a helping document and NOT normative b
 
 		<xs:simpleContent>
 			<xs:extension base="xs:string">
-				<xs:attribute name="link" type="xs:anyURI" use="optional"/>
-				<xs:attribute name="summary" use="optional">
+				<xs:attribute name="link" type="xs:anyURI"/>
+				<xs:attribute name="summary">
 					<xs:simpleType>
 						<xs:restriction base="xs:token">
 							<xs:enumeration value="all_has"/>
@@ -620,12 +620,9 @@ Please note that the EBU-TT XML Schema is a helping document and NOT normative b
 				<xs:attribute name="fontFamilyName"
 					type="ebuttdt:fontFamilyType" use="required"/>
 				<xs:attribute name="src" type="xs:anyURI" use="required"/>
-				<xs:attribute name="fontStyle" type="ebuttdt:fontStyleType"
-					use="optional"/>
-				<xs:attribute name="fontWeight" type="ebuttdt:fontWeightType"
-					use="optional"/>
-				<xs:attribute name="fontSize" type="ebuttdt:fontSizeType"
-					use="optional"/>
+				<xs:attribute name="fontStyle" type="ebuttdt:fontStyleType"/>
+				<xs:attribute name="fontWeight" type="ebuttdt:fontWeightType"/>
+				<xs:attribute name="fontSize" type="ebuttdt:fontSizeType"/>
 			</xs:extension>
 		</xs:simpleContent>
 	</xs:complexType>
