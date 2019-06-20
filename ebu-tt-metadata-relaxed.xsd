@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2019, EBU, www.ebu.ch -->
+<!-- Version of XML Schema: 0.9 -->
+<!-- Creation: 24/05/2019 -->
+<!--  The publication of this EBU-TT XML Schema for EBU-TT Metadata is intended to support the 
+	implementation of the specification in EBU-Tech 3390 version 1.0.
+Please note that the EBU-TT XML Schema is a helping document and NOT normative but informative.
+Further, this schema file defines metadata types that exercise the relaxed validation rules 
+specified in Tech 3390. To use stricter rules matching more closely the historical intent of
+Tech3350 v1.1, use ebu-tt-metadata.xsd instead. 
+However, this schema does not permit use of the deprecated ebuttm:documentMetadata -->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns="urn:ebu:tt:metadata" 
+	xmlns:ebuttm="urn:ebu:tt:metadata"
+	xmlns:ebuttdt="urn:ebu:tt:datatypes"
+	xmlns:ttm="http://www.w3.org/ns/ttml#metadata"
+	targetNamespace="urn:ebu:tt:metadata" 
+	elementFormDefault="qualified"
+	xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" vc:minVersion="1.1">
+	<xs:include schemaLocation="ebu-tt-metadata-elements.xsd"/>
+	<xs:import namespace="http://www.w3.org/ns/ttml#metadata"
+		schemaLocation="metadata.xsd"/>
+	
+
+	<xs:complexType name="anyMetadata_type">
+		<xs:annotation>
+			<xs:documentation>Container for metadata
+				information.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:any namespace="not http://www.w3.org/ns/ttml urn:ebu:tt"
+				minOccurs="0" maxOccurs="unbounded" processContents="lax"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="metadataBase_type">
+		<xs:sequence>
+			<xs:element ref="ttm:title" minOccurs="0"/>
+			<xs:element ref="ttm:desc" minOccurs="0"/>
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:group ref="ebu-tt-any-metadata.class"/>
+			</xs:choice>
+			<xs:any minOccurs="0" maxOccurs="unbounded"
+				processContents="lax"
+				notNamespace="http://www.w3.org/ns/ttml urn:ebu:tt:metadata"
+			/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="headMetadata_type">
+		<xs:complexContent>
+			<xs:extension base="ebuttm:metadataBase_type"/>			
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="bodyMetadata_type">
+		<xs:complexContent>
+			<xs:extension base="ebuttm:metadataBase_type"/>			
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="divMetadata_type">
+		<xs:complexContent>
+			<xs:extension base="ebuttm:metadataBase_type"/>			
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="pMetadata_type">
+		<xs:complexContent>
+			<xs:extension base="ebuttm:metadataBase_type"/>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="spanMetadata_type">
+		<xs:complexContent>
+			<xs:extension base="ebuttm:metadataBase_type"/>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="stylingMetadata_type">
+		<xs:complexContent>
+			<xs:extension base="ebuttm:metadataBase_type"/>
+		</xs:complexContent>
+	</xs:complexType>
+
+</xs:schema>
