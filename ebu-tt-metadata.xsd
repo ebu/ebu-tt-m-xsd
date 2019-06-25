@@ -274,7 +274,15 @@ Please note that the EBU-TT XML Schema is a helping document and NOT normative b
 	<xs:element name="relatedMediaIdentifier" type="xs:string"/>
 	<xs:element name="relatedObjectIdentifier">
 		<xs:complexType>
-			<xs:attribute name="type" type="xs:string"/>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="type" type="xs:string">
+					<xs:annotation>
+							<xs:documentation>Related object identifier type.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+				</xs:extension>
+			</xs:simpleContent>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="relatedMediaDuration"
