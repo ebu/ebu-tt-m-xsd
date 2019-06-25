@@ -155,6 +155,9 @@ Please note that the EBU-TT XML Schema is a helping document and NOT normative b
 	<xs:simpleType name="mediaTimingType">
 		<xs:union memberTypes="ebuttdt:timecountTimingType ebuttdt:fullClockTimingType"/>
 	</xs:simpleType>
+	<xs:simpleType name="startOfProgrammeTimingType">
+		<xs:union memberTypes="ebuttdt:smpteTimingType ebuttdt:clockTimingType"/>
+	</xs:simpleType>
 	<xs:simpleType name="timecountTimingType">
 		<xs:restriction base="xs:string">
 			<xs:pattern value="[0-9]+(\.[0-9]+)?(h|ms|s|m)"/>
