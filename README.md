@@ -21,3 +21,6 @@ Please note that the EBU-TT XML Schema is a helping document and NOT normative b
 Where an element is defined or referenced with either a `minOccurs` or a `maxOccurs`
 that is not the default value (which is 1 for both), _both_ `minOccurs` and `maxOccurs`
 should be explicitly specified.
+
+The `use` attribute should only be specified when its value is `required` - in all other
+cases the default `optional` value applies and does not need to be specified.
