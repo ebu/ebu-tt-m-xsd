@@ -6,7 +6,7 @@
 Please note that the EBU-TT XML Schema is a helping document and NOT normative but informative.-->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:ttm="http://www.w3.org/ns/ttml#metadata"
-  targetNamespace="http://www.w3.org/ns/ttml#metadata">
+  targetNamespace="http://www.w3.org/ns/ttml#metadata" elementFormDefault="qualified">
   <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="http://www.w3.org/2001/xml.xsd"/>
   <xs:attribute name="agent" type="xs:IDREFS"/>
   <xs:attribute name="role" type="xs:NMTOKENS"/>
@@ -17,7 +17,7 @@ Please note that the EBU-TT XML Schema is a helping document and NOT normative b
         
         <xs:element name="name" minOccurs="0" maxOccurs="unbounded">
           <xs:complexType mixed="true">
-            <xs:attribute name="type">
+            <xs:attribute name="type" use="required">
               <xs:simpleType>
                 <xs:restriction base="xs:token">
                   <xs:enumeration value="full"/>
@@ -45,7 +45,7 @@ Please note that the EBU-TT XML Schema is a helping document and NOT normative b
         
       </xs:sequence>
       
-      <xs:attribute name="type">
+      <xs:attribute name="type" use="required">
         <xs:simpleType>
           <xs:restriction base="xs:token">
             <xs:enumeration value="person"/>
