@@ -9,13 +9,13 @@ Please note that the EBU-TT XML Schema is a helping document and NOT normative b
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
 	xmlns="urn:ebu:tt:metadata" 
 	xmlns:ebuttm="urn:ebu:tt:metadata"
-	xmlns:ebuttdt="urn:ebu:tt:datatypes"
+	xmlns:ebuttmdt="urn:ebu:tt:metadata-datatypes"
 	xmlns:ttm="http://www.w3.org/ns/ttml#metadata"
 	targetNamespace="urn:ebu:tt:metadata" 
 	elementFormDefault="qualified"
-	xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" vc:minVersion="1.1">
-	<xs:import namespace="urn:ebu:tt:datatypes"
-		schemaLocation="ebu-tt-datatypes.xsd"/>
+	>
+	<xs:import namespace="urn:ebu:tt:metadata-datatypes"
+		schemaLocation="ebu-tt-m-datatypes.xsd"/>
 	<xs:import namespace="http://www.w3.org/ns/ttml#metadata"
 		schemaLocation="metadata.xsd"/>
 	<xs:complexType name="binaryData_type">
@@ -286,9 +286,9 @@ Please note that the EBU-TT XML Schema is a helping document and NOT normative b
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="relatedMediaDuration"
-		type="ebuttdt:mediaTimingType"/>
+		type="ebuttmdt:mediaTimingType"/>
 	<xs:element name="documentBeginDate"
-		type="ebuttdt:noTimezoneDateType"/>
+		type="ebuttmdt:noTimezoneDateType"/>
 	<xs:element name="localTimeOffset" type="xs:string"/>
 	<xs:element name="referenceClockIdentifier" type="xs:string"/>
 	<xs:element name="broadcastServiceIdentifier">
@@ -358,7 +358,7 @@ Please note that the EBU-TT XML Schema is a helping document and NOT normative b
 				Reference Code (SLR)</xs:documentation>
 		</xs:annotation>
 	</xs:element>
-	<xs:element name="documentCreationDate" type="ebuttdt:creationDateType">
+	<xs:element name="documentCreationDate" type="ebuttmdt:creationDateType">
 		<xs:annotation>
 			<xs:documentation>The date of creation of the EBU-TT
 				document. </xs:documentation>
@@ -396,7 +396,7 @@ Please note that the EBU-TT XML Schema is a helping document and NOT normative b
 				(MNC). </xs:documentation>
 		</xs:annotation>
 	</xs:element>
-	<xs:element name="documentStartOfProgramme"	type="ebuttdt:startOfProgrammeTimingType">
+	<xs:element name="documentStartOfProgramme"	type="ebuttmdt:startOfProgrammeTimingType">
 		<xs:annotation>
 			<xs:documentation>The time code of the first frame of the
 				recorded video signal which is intended for
@@ -626,11 +626,11 @@ Please note that the EBU-TT XML Schema is a helping document and NOT normative b
 		<xs:simpleContent>
 			<xs:extension base="xs:string">
 				<xs:attribute name="fontFamilyName"
-					type="ebuttdt:fontFamilyType" use="required"/>
+					type="ebuttmdt:fontFamilyType" use="required"/>
 				<xs:attribute name="src" type="xs:anyURI" use="required"/>
-				<xs:attribute name="fontStyle" type="ebuttdt:fontStyleType"/>
-				<xs:attribute name="fontWeight" type="ebuttdt:fontWeightType"/>
-				<xs:attribute name="fontSize" type="ebuttdt:fontSizeType"/>
+				<xs:attribute name="fontStyle" type="ebuttmdt:fontStyleType"/>
+				<xs:attribute name="fontWeight" type="ebuttmdt:fontWeightType"/>
+				<xs:attribute name="fontSize" type="ebuttmdt:fontSizeType"/>
 			</xs:extension>
 		</xs:simpleContent>
 	</xs:complexType>
@@ -648,7 +648,7 @@ Please note that the EBU-TT XML Schema is a helping document and NOT normative b
 		</xs:simpleContent>
 	</xs:complexType>
 
-	<xs:attribute name="authoringDelay" type="ebuttdt:authoringDelayType">
+	<xs:attribute name="authoringDelay" type="ebuttmdt:authoringDelayType">
 		<xs:annotation>
 			<xs:documentation> The authoring delay associated with the timed
 				content within this document may be indicated using the
@@ -682,13 +682,13 @@ Please note that the EBU-TT XML Schema is a helping document and NOT normative b
 	</xs:complexType>
 
 	<xs:complexType name="documentTransitionStyle_type" mixed="false">
-		<xs:attribute name="inUnit" type="ebuttdt:transitionStyleAttributeType" use="required"/>
-		<xs:attribute name="outUnit" type="ebuttdt:transitionStyleAttributeType" use="required"/>
+		<xs:attribute name="inUnit" type="ebuttmdt:transitionStyleAttributeType" use="required"/>
+		<xs:attribute name="outUnit" type="ebuttmdt:transitionStyleAttributeType" use="required"/>
 	</xs:complexType>
 
 	<xs:complexType name="transitionStyle_type">
-		<xs:attribute name="inUnit" type="ebuttdt:transitionStyleAttributeType" use="required"/>
-		<xs:attribute name="outUnit" type="ebuttdt:transitionStyleAttributeType" use="required"/>
+		<xs:attribute name="inUnit" type="ebuttmdt:transitionStyleAttributeType" use="required"/>
+		<xs:attribute name="outUnit" type="ebuttmdt:transitionStyleAttributeType" use="required"/>
 	</xs:complexType>
 	
 	<xs:complexType name="anyMetadata_type">
@@ -697,7 +697,7 @@ Please note that the EBU-TT XML Schema is a helping document and NOT normative b
 				information.</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:any namespace="not http://www.w3.org/ns/ttml urn:ebu:tt"
+			<xs:any namespace="##other"
 				minOccurs="0" maxOccurs="unbounded" processContents="lax"/>
 		</xs:sequence>
 	</xs:complexType>
@@ -730,8 +730,7 @@ Please note that the EBU-TT XML Schema is a helping document and NOT normative b
 					<xs:element name="binaryData" type="binaryData_type"
 						minOccurs="0" maxOccurs="unbounded"/>
 					<xs:any minOccurs="0" maxOccurs="unbounded"
-						processContents="lax"
-						notNamespace="http://www.w3.org/ns/ttml urn:ebu:tt:metadata"
+						processContents="lax" namespace="##local"
 					/>
 				</xs:sequence>
 			</xs:extension>
@@ -750,8 +749,7 @@ Please note that the EBU-TT XML Schema is a helping document and NOT normative b
 					<xs:element name="facet" type="facet_type" minOccurs="0"
 						maxOccurs="unbounded"/>
 					<xs:any minOccurs="0" maxOccurs="unbounded"
-						processContents="lax"
-						notNamespace="http://www.w3.org/ns/ttml urn:ebu:tt:metadata"
+						processContents="lax" namespace="##local"
 					/>
 				</xs:sequence>
 			</xs:extension>
@@ -772,8 +770,7 @@ Please note that the EBU-TT XML Schema is a helping document and NOT normative b
 					<xs:element name="facet" type="facet_type" minOccurs="0"
 						maxOccurs="unbounded"/>
 					<xs:any minOccurs="0" maxOccurs="unbounded"
-						processContents="lax"
-						notNamespace="http://www.w3.org/ns/ttml urn:ebu:tt:metadata"
+						processContents="lax" namespace="##local"
 					/>
 				</xs:sequence>
 			</xs:extension>
@@ -792,8 +789,7 @@ Please note that the EBU-TT XML Schema is a helping document and NOT normative b
 					<xs:element name="facet" type="facet_type" minOccurs="0"
 						maxOccurs="unbounded"/>
 					<xs:any minOccurs="0" maxOccurs="unbounded"
-						processContents="lax"
-						notNamespace="http://www.w3.org/ns/ttml urn:ebu:tt:metadata"
+						processContents="lax" namespace="##local"
 					/>
 				</xs:sequence>
 			</xs:extension>
@@ -807,8 +803,7 @@ Please note that the EBU-TT XML Schema is a helping document and NOT normative b
 					<xs:element name="facet" type="facet_type" minOccurs="0"
 						maxOccurs="unbounded"/>
 					<xs:any minOccurs="0" maxOccurs="unbounded"
-						processContents="lax"
-						notNamespace="http://www.w3.org/ns/ttml urn:ebu:tt:metadata"
+						processContents="lax" namespace="##local"
 					/>
 				</xs:sequence>
 			</xs:extension>
@@ -822,8 +817,7 @@ Please note that the EBU-TT XML Schema is a helping document and NOT normative b
 					<xs:element name="font" type="font_type" minOccurs="0"
 						maxOccurs="unbounded"/>
 					<xs:any minOccurs="0" maxOccurs="unbounded"
-						processContents="lax"
-						notNamespace="http://www.w3.org/ns/ttml urn:ebu:tt:metadata"
+						processContents="lax" namespace="##local"
 					/>
 				</xs:sequence>
 			</xs:extension>

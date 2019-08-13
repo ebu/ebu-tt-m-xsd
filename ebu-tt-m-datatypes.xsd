@@ -6,9 +6,8 @@
 	implementation of the specification in EBU-Tech 3390 version 1.0.
 Please note that the EBU-TT XML Schema is a helping document and NOT normative but informative.-->
 
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ebuttdt="urn:ebu:tt:datatypes"
-	targetNamespace="urn:ebu:tt:datatypes"
-    xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" vc:minVersion="1.1">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ebuttmdt="urn:ebu:tt:metadata-datatypes"
+	targetNamespace="urn:ebu:tt:metadata-datatypes">
 	<xs:simpleType name="cellResolutionType">
 		<xs:restriction base="xs:token">
 			<xs:pattern value="[0]*[1-9][0-9]*\s[0]*[1-9][0-9]*"/>
@@ -36,7 +35,7 @@ Please note that the EBU-TT XML Schema is a helping document and NOT normative b
 	</xs:simpleType>
 	<xs:simpleType name="extentType">
 		<xs:union
-			memberTypes="ebuttdt:cellExtentType ebuttdt:percentageExtentType ebuttdt:pixelExtentType"
+			memberTypes="ebuttmdt:cellExtentType ebuttmdt:percentageExtentType ebuttmdt:pixelExtentType"
 		/>
 	</xs:simpleType>
 	<xs:simpleType name="fontFamilyType">
@@ -44,7 +43,7 @@ Please note that the EBU-TT XML Schema is a helping document and NOT normative b
 	</xs:simpleType>
 	<xs:simpleType name="fontSizeType">
 		<xs:union
-			memberTypes="ebuttdt:cellFontSizeType ebuttdt:percentageFontSizeType ebuttdt:pixelFontSizeType"
+			memberTypes="ebuttmdt:cellFontSizeType ebuttmdt:percentageFontSizeType ebuttmdt:pixelFontSizeType"
 		/>
 	</xs:simpleType>
 	<xs:simpleType name="cellFontSizeType">
@@ -96,7 +95,7 @@ Please note that the EBU-TT XML Schema is a helping document and NOT normative b
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="lineHeightType">
-		<xs:union memberTypes="ebuttdt:percentageLineHeightType ebuttdt:cellLineHeightType ebuttdt:pixelLineHeightType">
+		<xs:union memberTypes="ebuttmdt:percentageLineHeightType ebuttmdt:cellLineHeightType ebuttmdt:pixelLineHeightType">
 			<xs:simpleType>
 				<xs:restriction base="xs:token">
 					<xs:enumeration value="normal"/>
@@ -106,7 +105,7 @@ Please note that the EBU-TT XML Schema is a helping document and NOT normative b
 	</xs:simpleType>
 	<xs:simpleType name="colorType">
 		<xs:union
-			memberTypes="ebuttdt:rgbHexColorType ebuttdt:rgbaHexColorType ebuttdt:rgbColorType ebuttdt:rgbaColorType ebuttdt:namedColorType"
+			memberTypes="ebuttmdt:rgbHexColorType ebuttmdt:rgbaHexColorType ebuttmdt:rgbColorType ebuttmdt:rgbaColorType ebuttmdt:namedColorType"
 		/>
 	</xs:simpleType>
 	<xs:simpleType name="cellOriginType">
@@ -126,7 +125,7 @@ Please note that the EBU-TT XML Schema is a helping document and NOT normative b
 	</xs:simpleType>
 	<xs:simpleType name="originType">
 		<xs:union
-			memberTypes="ebuttdt:cellOriginType ebuttdt:pixelOriginType ebuttdt:percentageOriginType"
+			memberTypes="ebuttmdt:cellOriginType ebuttmdt:pixelOriginType ebuttmdt:percentageOriginType"
 		/>
 	</xs:simpleType>
 	<xs:simpleType name="paddingType">
@@ -138,11 +137,11 @@ Please note that the EBU-TT XML Schema is a helping document and NOT normative b
 	</xs:simpleType>
 	<xs:simpleType name="timingType">
 		<xs:union
-			memberTypes="ebuttdt:smpteTimingType ebuttdt:mediaTimingType ebuttdt:clockTimingType"/>
+			memberTypes="ebuttmdt:smpteTimingType ebuttmdt:mediaTimingType ebuttmdt:clockTimingType"/>
 	</xs:simpleType>
 	<xs:simpleType name="durationTimingType">
 		<xs:union
-			memberTypes="ebuttdt:clockTimingType ebuttdt:mediaTimingType"/>
+			memberTypes="ebuttmdt:clockTimingType ebuttmdt:mediaTimingType"/>
 	</xs:simpleType>
 	<xs:simpleType name="smpteTimingType">
 		<xs:restriction base="xs:string">
@@ -150,13 +149,13 @@ Please note that the EBU-TT XML Schema is a helping document and NOT normative b
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="clockTimingType">
-		<xs:union memberTypes="ebuttdt:limitedClockTimingType ebuttdt:timecountTimingType"/>
+		<xs:union memberTypes="ebuttmdt:limitedClockTimingType ebuttmdt:timecountTimingType"/>
 	</xs:simpleType>
 	<xs:simpleType name="mediaTimingType">
-		<xs:union memberTypes="ebuttdt:timecountTimingType ebuttdt:fullClockTimingType"/>
+		<xs:union memberTypes="ebuttmdt:timecountTimingType ebuttmdt:fullClockTimingType"/>
 	</xs:simpleType>
 	<xs:simpleType name="startOfProgrammeTimingType">
-		<xs:union memberTypes="ebuttdt:smpteTimingType ebuttdt:clockTimingType"/>
+		<xs:union memberTypes="ebuttmdt:smpteTimingType ebuttmdt:clockTimingType"/>
 	</xs:simpleType>
 	<xs:simpleType name="timecountTimingType">
 		<xs:restriction base="xs:string">
@@ -200,7 +199,7 @@ Please note that the EBU-TT XML Schema is a helping document and NOT normative b
 	</xs:simpleType>
 	<xs:simpleType name="lengthType">
 		<xs:union
-			memberTypes="ebuttdt:cellLengthType ebuttdt:percentageLengthType ebuttdt:pixelLengthType"
+			memberTypes="ebuttmdt:cellLengthType ebuttmdt:percentageLengthType ebuttmdt:pixelLengthType"
 		/>
 	</xs:simpleType>
 	<xs:simpleType name="rgbHexColorType">
