@@ -176,7 +176,7 @@ Please note that the EBU-TT XML Schema is a helping document and NOT normative b
 		<xs:restriction base="xs:date">
 			<xs:pattern value="[^:Z]*"/>
 		</xs:restriction>
-        </xs:simpleType>
+	</xs:simpleType>
 	<xs:simpleType name="fullClockTimingType">
 		<xs:restriction base="xs:string">
 			<xs:pattern value="[0-9][0-9]+:[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?"/>

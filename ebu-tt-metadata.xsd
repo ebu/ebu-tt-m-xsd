@@ -533,7 +533,7 @@ Please note that the EBU-TT XML Schema is a helping document and NOT normative b
 		</xs:choice>
 	</xs:group>
 	
-	<xs:complexType name="documentMetadata">
+	<xs:complexType name="documentMetadata_type">
 		<xs:annotation>
 			<xs:documentation>EBU-TT specific metadata that applies to the whole
 				EBU-TT document.</xs:documentation>
@@ -543,6 +543,7 @@ Please note that the EBU-TT XML Schema is a helping document and NOT normative b
 		</xs:choice>
 	</xs:complexType>
 
+	<xs:element name="documentMetadata" type="documentMetadata_type"/>
 
 	<xs:complexType name="appliedProcessing_type">
 		<xs:sequence>
@@ -690,138 +691,15 @@ Please note that the EBU-TT XML Schema is a helping document and NOT normative b
 		<xs:attribute name="inUnit" type="ebuttmdt:transitionStyleAttributeType" use="required"/>
 		<xs:attribute name="outUnit" type="ebuttmdt:transitionStyleAttributeType" use="required"/>
 	</xs:complexType>
-	
-	<xs:complexType name="anyMetadata_type">
+
+	<xs:complexType name="metadata_type">
 		<xs:annotation>
 			<xs:documentation>Container for metadata
 				information.</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:any namespace="##other"
-				minOccurs="0" maxOccurs="unbounded" processContents="lax"/>
+			<xs:any namespace="##other" minOccurs="0" maxOccurs="unbounded" processContents="lax"/>
 		</xs:sequence>
 	</xs:complexType>
-
-	<xs:complexType name="metadataBase_type">
-		<xs:sequence>
-			<xs:element ref="ttm:title" minOccurs="0" maxOccurs="1"/>
-			<xs:element ref="ttm:desc" minOccurs="0" maxOccurs="1"/>
-		</xs:sequence>
-	</xs:complexType>
-
-	<xs:complexType name="headMetadata_type">
-		<xs:complexContent>
-			<xs:extension base="ebuttm:metadataBase_type">
-				<xs:sequence>
-					<xs:choice>
-						<xs:choice minOccurs="1" maxOccurs="unbounded">
-							<xs:group ref="ebu-tt-metadata.class"/>
-						</xs:choice>
-						<xs:element name="documentMetadata"
-							type="ebuttm:documentMetadata">
-							<xs:unique name="unique-documentFacet">
-								<xs:selector xpath="ebuttm:documentFacet"/>
-								<xs:field xpath="."/>
-							</xs:unique>
-						</xs:element>
-					</xs:choice>
-					<xs:element ref="ttm:agent" minOccurs="0"
-						maxOccurs="unbounded"/>
-					<xs:element name="binaryData" type="binaryData_type"
-						minOccurs="0" maxOccurs="unbounded"/>
-					<xs:any minOccurs="0" maxOccurs="unbounded"
-						processContents="lax" namespace="##local"
-					/>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-
-	<xs:complexType name="bodyMetadata_type">
-		<xs:complexContent>
-			<xs:extension base="ebuttm:metadataBase_type">
-				<xs:sequence>
-					<xs:element name="authoringTechnique"
-						type="authoringTechnique_type" minOccurs="0"
-						maxOccurs="unbounded"/>
-					<xs:element name="transitionStyle" type="transitionStyle_type"
-						minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element name="facet" type="facet_type" minOccurs="0"
-						maxOccurs="unbounded"/>
-					<xs:any minOccurs="0" maxOccurs="unbounded"
-						processContents="lax" namespace="##local"
-					/>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-
-	<xs:complexType name="divMetadata_type">
-		<xs:complexContent>
-			<xs:extension base="ebuttm:metadataBase_type">
-				<xs:sequence>
-					<xs:element name="authoringTechnique"
-						type="authoringTechnique_type" minOccurs="0"
-						maxOccurs="unbounded"/>
-					<xs:element name="binaryData" type="binaryData_type"
-						minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element name="transitionStyle" type="transitionStyle_type"
-						minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element name="facet" type="facet_type" minOccurs="0"
-						maxOccurs="unbounded"/>
-					<xs:any minOccurs="0" maxOccurs="unbounded"
-						processContents="lax" namespace="##local"
-					/>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-
-	<xs:complexType name="pMetadata_type">
-		<xs:complexContent>
-			<xs:extension base="ebuttm:metadataBase_type">
-				<xs:sequence>
-					<xs:element name="authoringTechnique"
-						type="authoringTechnique_type" minOccurs="0"
-						maxOccurs="unbounded"/>
-					<xs:element name="transitionStyle" type="transitionStyle_type"
-						minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element name="facet" type="facet_type" minOccurs="0"
-						maxOccurs="unbounded"/>
-					<xs:any minOccurs="0" maxOccurs="unbounded"
-						processContents="lax" namespace="##local"
-					/>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-
-	<xs:complexType name="spanMetadata_type">
-		<xs:complexContent>
-			<xs:extension base="ebuttm:metadataBase_type">
-				<xs:sequence>
-					<xs:element name="facet" type="facet_type" minOccurs="0"
-						maxOccurs="unbounded"/>
-					<xs:any minOccurs="0" maxOccurs="unbounded"
-						processContents="lax" namespace="##local"
-					/>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-
-	<xs:complexType name="stylingMetadata_type">
-		<xs:complexContent>
-			<xs:extension base="ebuttm:metadataBase_type">
-				<xs:sequence>
-					<xs:element name="font" type="font_type" minOccurs="0"
-						maxOccurs="unbounded"/>
-					<xs:any minOccurs="0" maxOccurs="unbounded"
-						processContents="lax" namespace="##local"
-					/>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-
+	
 </xs:schema>
